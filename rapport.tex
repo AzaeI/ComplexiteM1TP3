@@ -1,0 +1,90 @@
+\documentclass[12pt]{report}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[left=2cm,right=2cm,top=2.5cm,bottom=2cm]{geometry}
+\usepackage[]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	MAIN PAGE
+%----------------------------------------------------------------------------------------
+\begin{titlepage}
+\vspace*{\fill}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aix-Marseille Université}\\[1.5cm]
+\textsc{\Large Compléxité}\\[0.5cm]
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Deux réductions vers SAT}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Autheur:}\\
+Michaël \textsc{Gileta} \\
+Yohan \textsc{Roux}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Référent:} \\
+Kévin \textsc{Perrot}
+\end{flushright}
+\end{minipage}\\[2cm]
+
+{\large Vendredi 18 Octobre}\\[2cm]
+
+\includegraphics[scale=0.5]{./images/logo.png}\\[1cm]
+
+\vspace*{\fill}
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Réduction de KERNEL à SAT}
+\subsection*{1. Réduction}
+
+Soit s un sommet, avec pour tous s $\in$ V, si $s=1$ $\Leftrightarrow$ s $\in$ $V\prime$, sinon $ s=0 \Leftrightarrow$ s $\in$ V. \\
+Soit $(s\prime, s\prime\prime)$ un arc orienté de $s\prime$ vers $s\prime\prime$\\
+\\
+Pour un graph G=(V,E) avec : \\
+V : l'ensemble des sommets\\
+E : l'ensemble des arc orienté\\
+\\
+On construit notre formule à partir de E\\
+\\
+. s $\in V\backslash V\prime$ et $s\prime$ $ \in V\prime$ $\Longrightarrow$ (s,$s\prime$) $\in$ E\\
+. $\underset{C_{ij} \in E}{\land} (\lnot i \lor \lnot j)$
+\subsection*{2. Minisat}
+
+\section*{Réduction de SUDOKU à SAT}
+\subsection*{1. Réduction}
+Soit E = \{1..9\} , $E\prime$=\{0,1,2\} , $E\prime\prime$=\{1,2,3\}\\
+Soit $C_{i,j,k} \in E$\\
+La case (i,j) contient la valeur k
+\subsubsection*{Au moins une valeur par case}
+$\underset{i,j \in E}{\land} (\underset{k \in E}{\lor} C_{ijk}$
+\subsubsection*{Au moins une fois chaque chiffre sur chaque ligne}
+$\underset{i,k \in E}{\land} \underset{j \in E}{\lor} C_{ijk}$
+\subsubsection*{Au moins une fois chaque chiffre sur chaque colonne}
+$\underset{j,k \in E}{\land} \underset{i \in E}{\lor} C_{ijk}$
+\subsubsection*{Au moins une fois chaque chiffre dans chaque region}
+\subsubsection*{Au plus une valeur par case}
+$\underset{i,j \in E}{\land} \underset{\underset{k \ne k\prime}{k,k\prime \in E,} }{\lor} (\lnot C_{ijk} \lor \lnot C_{ijk\prime})$
+\subsubsection*{Au plus une fois chaque chiffre sur chaque ligne}
+$\underset{i,k \in E}{\land} \underset{\underset{j \ne j\prime}{j,j\prime \in E,}}{\lor} (\lnot C_{ijk} \lor \lnot C_{ij\prime k})$
+\subsubsection*{Au plus une fois chaque chiffre sur chaque colonne}
+$\underset{j,k \in E}{\land} \underset{\underset{i \ne i\prime}{i,i\prime \in i,}}{\lor} (\lnot C_{ijk} \lor \lnot C_{i\prime jk})$
+\subsubsection*{Au plus une fois chaque chiffre dans chaque region}
+
+\end{document}
