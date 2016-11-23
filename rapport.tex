@@ -79,7 +79,7 @@ $\underset{i,k \in E}{\land} \underset{j \in E}{\lor} C_{ijk}$
 \subsubsection*{Au moins une fois chaque chiffre sur chaque colonne}
 $\underset{j,k \in E}{\land} \underset{i \in E}{\lor} C_{ijk}$
 \subsubsection*{Au moins une fois chaque chiffre dans chaque region}
-$\underset{k \in E}{\underset{i,j \in E\prime}{\land}} \underset{i\prime,j\prime \in \in E\prime\prime,}{\land} (C_{[(3*i)+i\prime] [(3*j)+j\prime]k})$
+$\underset{k \in E}{\underset{i,j \in E\prime}{\land}} \underset{i\prime,j\prime \in E\prime\prime,}{\land} (C_{[(3*i)+i\prime] [(3*j)+j\prime]k})$
 \subsubsection*{Au plus une valeur par case}
 $\underset{i,j \in E}{\land} \underset{\underset{k \ne k\prime}{k,k\prime \in E,} }{\lor} (\lnot C_{ijk} \lor \lnot C_{ijk\prime})$
 \subsubsection*{Au plus une fois chaque chiffre sur chaque ligne}
@@ -87,6 +87,6 @@ $\underset{i,k \in E}{\land} \underset{\underset{j \ne j\prime}{j,j\prime \in E,
 \subsubsection*{Au plus une fois chaque chiffre sur chaque colonne}
 $\underset{j,k \in E}{\land} \underset{\underset{i \ne i\prime}{i,i\prime \in i,}}{\lor} (\lnot C_{ijk} \lor \lnot C_{i\prime jk})$
 \subsubsection*{Au plus une fois chaque chiffre dans chaque region}
-$\underset{i,j,k \in E}{\land} \underset{\underset{j \neq j\prime}{\underset{i \neq i\prime,}{\underset{j \ne E\prime\prime,}{i\prime \in \in E\prime\prime,}}}}{\land} (\lnot C_{ijk} \lor \lnot C_{[(3*i)+i\prime] [(3*j)+j\prime]k})$
+$\underset{i,j,k \in E}{\land} \underset{\underset{j \neq j\prime}{\underset{i \neq i\prime,}{\underset{j\prime \in E\prime\prime,}{i\prime \in E\prime\prime,}}}}{\land} (\lnot C_{ijk} \lor \lnot C_{[(3*i)+i\prime] [(3*j)+j\prime]k})$
 
 \end{document}
