@@ -61,24 +61,25 @@ Pour un graph G=(V,E) avec : \\
 V : l'ensemble des sommets\\
 E : l'ensemble des arc orienté\\
 \\
-On construit notre formule à partir de E\\
+On construit notre formule à partir de E puis de V\\
 \\
-. s $\in V\backslash V\prime$ et $s\prime$ $ \in V\prime$ $\Longrightarrow$ (s,$s\prime$) $\in$ E\\
-. $\underset{C_{ij} \in E}{\land} (\lnot i \lor \lnot j)$
-\subsection*{2. Minisat}
+(a) $\underset{C_{ij} \in E}{\land} (\lnot i \lor \lnot j)$ \\
+(b) $\underset{j \in V}{\land} (\lnot j \underset{C_{ij} \in E}{\lor} (\lnot i))$
 
+\subsection*{2. Minisat}
 \section*{Réduction de SUDOKU à SAT}
-\subsection*{1. Réduction}
+\subsection*{1. Modélisation de contrainte}
 Soit E = \{1..9\} , $E\prime$=\{0,1,2\} , $E\prime\prime$=\{1,2,3\}\\
 Soit $C_{i,j,k} \in E$\\
 La case (i,j) contient la valeur k
 \subsubsection*{Au moins une valeur par case}
-$\underset{i,j \in E}{\land} (\underset{k \in E}{\lor} C_{ijk}$
+$\underset{i,j \in E}{\land} \underset{k \in E}{\lor} C_{ijk}$
 \subsubsection*{Au moins une fois chaque chiffre sur chaque ligne}
 $\underset{i,k \in E}{\land} \underset{j \in E}{\lor} C_{ijk}$
 \subsubsection*{Au moins une fois chaque chiffre sur chaque colonne}
 $\underset{j,k \in E}{\land} \underset{i \in E}{\lor} C_{ijk}$
 \subsubsection*{Au moins une fois chaque chiffre dans chaque region}
+$\underset{k \in E}{\underset{i,j \in E\prime}{\land}} \underset{i\prime,j\prime \in \in E\prime\prime,}{\land} (C_{[(3*i)+i\prime] [(3*j)+j\prime]k})$
 \subsubsection*{Au plus une valeur par case}
 $\underset{i,j \in E}{\land} \underset{\underset{k \ne k\prime}{k,k\prime \in E,} }{\lor} (\lnot C_{ijk} \lor \lnot C_{ijk\prime})$
 \subsubsection*{Au plus une fois chaque chiffre sur chaque ligne}
@@ -86,5 +87,6 @@ $\underset{i,k \in E}{\land} \underset{\underset{j \ne j\prime}{j,j\prime \in E,
 \subsubsection*{Au plus une fois chaque chiffre sur chaque colonne}
 $\underset{j,k \in E}{\land} \underset{\underset{i \ne i\prime}{i,i\prime \in i,}}{\lor} (\lnot C_{ijk} \lor \lnot C_{i\prime jk})$
 \subsubsection*{Au plus une fois chaque chiffre dans chaque region}
+$\underset{i,j,k \in E}{\land} \underset{\underset{j \neq j\prime}{\underset{i \neq i\prime,}{\underset{j \ne E\prime\prime,}{i\prime \in \in E\prime\prime,}}}}{\land} (\lnot C_{ijk} \lor \lnot C_{[(3*i)+i\prime] [(3*j)+j\prime]k})$
 
 \end{document}
